@@ -1,0 +1,63 @@
+<h1>Add car to local storage</h1>
+    <div id="addCar">
+    <label for="brand" required>Brand</label><br/>
+    <input type="text" name="brand" id="brand"  [(ngModel)]="car.brand"/><br/>
+    <label for="model">Model</label><br/>
+    <input type="text" name="model" id="model"  [(ngModel)]="car.model"/><br/>
+    <label for="description">Description</label><br/>
+    <textarea id="description" [(ngModel)]="car.description">
+    </textarea><br/>
+    <label for="registration_number">Registration number</label><br/>
+    <input type="text" name="registration_number" id="registration_number" [(ngModel)]="car.registration_number"/><br/>
+    <label for="fuelType">Fuel</label><br/>
+    <select name="fuelType" id="fuelType" [(ngModel)]="car.fuelType">
+        <option value="Petrol">Petrol</option>
+        <option value="Diesel">Diesel</option>
+        <option value="Electric">Electric</option>
+    </select><br/>
+    <label for="transmission">Transmission</label><br/>
+    <select name="transmission" id="transmission" [(ngModel)]="car.transmission">
+        <option value="Manual">Manual</option>
+        <option value="Automatic">Automatic</option>
+        <option value="Semi-Automatic">Semi-Automatic</option>
+    </select><br/>
+    <div *ngIf="edit">
+        <hr/>
+        <button (click)="saveEdit()">Save changes</button>
+    </div>
+  </div>
+  <hr/>
+  <button (click)="addCar()">Add Car</button>
+  <button (click)="showCars()">Show cars</button>
+  <button (click)="saveChanges()">Save changes</button>
+  <table>
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Brand</td>
+            <td>Model</td>
+            <td>Description</td>
+            <td>Registration number</td>
+            <td>Fuel</td>
+            <td>Transmission</td>
+            <td>Operations</td>         
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let car of data;let i=index">
+            <td>{{i}}</td>
+            <td>{{car.brand}}</td>
+            <td>{{car.model}}</td>
+            <td>{{car.description}}</td>
+            <td>{{car.registration_number}}</td>
+            <td>{{car.fuelType}}</td>
+            <td>{{car.transmission}}</td>
+            <td>
+                <button (click)="removeCar(i)">Remove</button>
+                <button (click)="editCar(i)">Edit</button>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+  
